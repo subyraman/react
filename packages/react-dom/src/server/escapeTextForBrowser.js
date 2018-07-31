@@ -79,7 +79,6 @@ function escapeHtml(string) {
       case 62: // >
         escape = '&gt;';
         break;
-
       default:
         continue;
     }
