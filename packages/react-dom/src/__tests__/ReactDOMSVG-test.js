@@ -26,7 +26,9 @@ describe('ReactDOMSVG', () => {
         <image xlinkHref="http://i.imgur.com/w7GCRPb.png" />
       </svg>,
     );
-    expect(markup).toContain('xlink:href="http://i.imgur.com/w7GCRPb.png"');
+    expect(markup).toContain(
+      'xlink:href="http:&#x2F;&#x2F;i.imgur.com&#x2F;w7GCRPb.png"',
+    );
   });
 
   it('creates elements with SVG namespace inside SVG tag during mount', () => {

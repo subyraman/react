@@ -36,7 +36,7 @@
  * @private
  */
 
-const matchHtmlRegExp = /["'&<>]/;
+const matchHtmlRegExp = /["'&<>\/]/;
 
 /**
  * Escapes special characters and HTML entities in a given html string.
@@ -70,12 +70,16 @@ function escapeHtml(string) {
       case 39: // '
         escape = '&#x27;'; // modified from escape-html; used to be '&#39'
         break;
+      case 47: // / (forward slash)
+        escape = '&#x2F;';
+        break;
       case 60: // <
         escape = '&lt;';
         break;
       case 62: // >
         escape = '&gt;';
         break;
+
       default:
         continue;
     }

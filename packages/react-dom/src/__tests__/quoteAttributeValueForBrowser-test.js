@@ -68,7 +68,7 @@ describe('quoteAttributeValueForBrowser', () => {
     );
     expect(response).toMatch(
       '<img data-attr="&lt;script type=&#x27;&#x27; ' +
-        'src=&quot;&quot;&gt;&lt;/script&gt;" ' +
+        'src=&quot;&quot;&gt;&lt;&#x2F;script&gt;" ' +
         'data-reactroot=""/>',
     );
   });

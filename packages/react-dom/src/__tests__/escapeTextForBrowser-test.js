@@ -54,13 +54,22 @@ describe('escapeTextForBrowser', () => {
     expect(response).toMatch('<img data-attr="42" data-reactroot=""/>');
   });
 
+  it('escapes forward slashes', () => {
+    const response = ReactDOMServer.renderToString(
+      <img src="https://i.imgur.com/w7GCRPb.png" />,
+    );
+    expect(response).toMatch(
+      '<img src="https:&#x2F;&#x2F;i.imgur.com&#x2F;w7GCRPb.png" data-reactroot=""/>',
+    );
+  });
+
   it('escape text content representing a script tag', () => {
     const response = ReactDOMServer.renderToString(
       <span>{'<script type=\'\' src=""></script>'}</span>,
     );
     expect(response).toMatch(
       '<span data-reactroot="">&lt;script type=&#x27;&#x27; ' +
-        'src=&quot;&quot;&gt;&lt;/script&gt;</span>',
+        'src=&quot;&quot;&gt;&lt;&#x2F;script&gt;</span>',
     );
   });
 });
